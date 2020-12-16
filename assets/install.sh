@@ -73,7 +73,7 @@ fi
 #############
 if [[ -n "$(find /etc/postfix -iname virtual)" ]]
     postconf -e virtual_alias_domains=$maildomain
-    postconf -e virtual_alias_maps = hash:/etc/postfix/virtual
+    postconf -e virtual_alias_maps=hash:/etc/postfix/virtual
     postmap /etc/postfix/virtual
 fi
 
