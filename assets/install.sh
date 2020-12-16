@@ -69,6 +69,15 @@ if [[ -n "$(find /etc/postfix/certs -iname *.crt)" && -n "$(find /etc/postfix/ce
 fi
 
 #############
+# Enable virtual names
+#############
+if [[ -n "$(find /etc/postfix -iname virtual)" ]]
+    postconf -e virtual_alias_domains=$maildomain
+    postconf -e virtual_alias_maps = hash:/etc/postfix/virtual
+    postmap /etc/postfix/virtual
+fi
+
+#############
 #  opendkim
 #############
 
